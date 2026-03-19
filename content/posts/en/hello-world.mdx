@@ -1,0 +1,59 @@
+---
+title: "Building a Premium Bilingual Blog with Next.js 16"
+date: "2026-03-20"
+description: "A deep dive into how I built this developer-focused technical blog using Next.js 16, Tailwind CSS 4, and next-intl for i18n."
+tags: ["Next.js", "TailwindCSS", "i18n", "Engineering"]
+---
+
+# Building a Premium Bilingual Blog
+
+Welcome to the inaugural post on my technical blog. Today, I'm sharing the architectural decisions and styling techniques behind this very platform.
+
+## Why Next.js 16?
+
+Next.js 16 (App Router) provides a robust foundation for building high-performance, SEO-friendly applications. With **React Server Components (RSC)**, we can minimize client-side JavaScript, ensuring the blog remains lightning-fast.
+
+### Internationalization (i18n)
+
+Support for multiple languages is a first-class citizen here. I chose `next-intl` for its seamless integration with the App Router. The file structure follows the `[locale]` pattern:
+
+```bash
+src/app/[locale]/
+  ├── layout.tsx
+  ├── page.tsx
+  └── blog/
+      └── [slug]/
+          └── page.tsx
+```
+
+## Styling with Tailwind CSS 4
+
+Tailwind CSS 4 introduces a new era of CSS-first configuration. Instead of a bulky `tailwind.config.js`, we now use `@theme` blocks directly in our CSS files.
+
+Here's how I defined the premium typography scale:
+
+```css
+@theme {
+  --font-sans: "Inter", "Geist Sans", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600;
+}
+```
+
+## MDX Integration
+
+I'm using `next-mdx-remote` to parse MDX files. This allows me to write posts in Markdown while having the flexibility to embed React components when needed.
+
+> "The best way to learn is to build and then share." — Developer Wisdom
+
+## Features at a Glance
+
+1.  **Dark Mode**: Automatic detection and smooth transitions.
+2.  **Typography**: Optimized for technical reading with Fira Code for code blocks.
+3.  **Responsive**: Polished experience on mobile, tablet, and desktop.
+4.  **Bilingual**: Seamless switching between English and Chinese.
+
+Stay tuned for more deep dives into frontend engineering and system design!

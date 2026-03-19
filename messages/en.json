@@ -1,0 +1,12 @@
+{
+  "Index": {
+    "title": "Welcome to my Blog",
+    "description": "A sleek bilingual technical blog built with Next.js and Tailwind CSS."
+  },
+  "Navbar": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "projects": "Projects"
+  }
+}

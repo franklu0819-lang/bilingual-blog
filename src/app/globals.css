@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Geist Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Fira Code", "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --color-primary: var(--color-blue-600);
+  --color-primary-foreground: var(--color-white);
+  
+  --animate-underline: underline-hover 0.3s ease-in-out forwards;
+}
+
+@keyframes underline-hover {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #18181b;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #09090b;
+  --card-foreground: #fafafa;
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #18181b;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #d4d4d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased selection:bg-blue-100 dark:selection:bg-blue-900/30;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Premium Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold tracking-tight text-slate-900 dark:text-slate-50;
+}
+
+/* Gradient Accents */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400;
+}
+
+.bg-glass {
+  @apply bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 dark:border-white/10;
+}
+
+/* MDX Styling (Prose) */
+.prose {
+  @apply max-w-none text-slate-700 dark:text-slate-300;
+}
+
+.prose h1 { @apply text-4xl font-extrabold mb-8 mt-12; }
+.prose h2 { @apply text-2xl font-bold mb-4 mt-10 pb-2 border-b border-slate-200 dark:border-slate-800; }
+.prose h3 { @apply text-xl font-bold mb-3 mt-8; }
+.prose p { @apply mb-6 leading-7 text-lg; }
+.prose ul { @apply list-disc pl-6 mb-6 space-y-2; }
+.prose ol { @apply list-decimal pl-6 mb-6 space-y-2; }
+
+.prose code { 
+  @apply bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono text-blue-600 dark:text-blue-400;
+}
+
+.prose pre { 
+  @apply bg-slate-900 text-slate-50 p-6 rounded-xl overflow-x-auto my-8 shadow-lg border border-slate-800; 
+}
+
+.prose pre code { 
+  @apply bg-transparent p-0 text-slate-300;
+}
+
+.prose blockquote { 
+  @apply border-l-4 border-blue-500/50 bg-blue-50/50 dark:bg-blue-950/20 pl-6 pr-4 py-4 italic my-8 rounded-r-lg; 
+}
+
+.prose a { 
+  @apply text-blue-600 dark:text-blue-400 decoration-blue-500/30 underline underline-offset-4 hover:decoration-blue-500 transition-all; 
+}
+
+.prose img {
+  @apply rounded-xl shadow-md my-8;
+}
+
+/* Smooth Transitions */
+.transition-all-300 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-transparent bg-clip-content hover:bg-slate-400 dark:hover:bg-slate-600;
+}

@@ -1,0 +1,59 @@
+---
+title: "使用 Next.js 16 构建高端双语博客"
+date: "2026-03-20"
+description: "深入探讨我如何使用 Next.js 16、Tailwind CSS 4 和 next-intl 构建这个面向开发者的技术博客。"
+tags: ["Next.js", "TailwindCSS", "i18n", "工程实践"]
+---
+
+# 使用 Next.js 16 构建高端双语博客
+
+欢迎来到我技术博客的第一篇文章。今天，我将分享这个平台背后的架构决策和样式技巧。
+
+## 为什么选择 Next.js 16？
+
+Next.js 16 (App Router) 为构建高性能、SEO 友好的应用提供了坚实的基础。通过 **React Server Components (RSC)**，我们可以最大限度地减少客户端 JavaScript，确保博客保持极速。
+
+### 国际化 (i18n)
+
+多语言支持在这里是首要考虑的。我选择了 `next-intl`，因为它与 App Router 完美集成。文件结构遵循 `[locale]` 模式：
+
+```bash
+src/app/[locale]/
+  ├── layout.tsx
+  ├── page.tsx
+  └── blog/
+      └── [slug]/
+          └── page.tsx
+```
+
+## 使用 Tailwind CSS 4 进行样式设计
+
+Tailwind CSS 4 引入了以 CSS 为中心的配置新时代。现在我们直接在 CSS 文件中使用 `@theme` 块，而不是繁琐的 `tailwind.config.js`。
+
+以下是我如何定义高端排版比例的：
+
+```css
+@theme {
+  --font-sans: "Inter", "Geist Sans", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600;
+}
+```
+
+## MDX 集成
+
+我使用 `next-mdx-remote` 来解析 MDX 文件。这让我可以用 Markdown 编写文章，同时拥有在需要时嵌入 React 组件的灵活性。
+
+> “最好的学习方法是构建然后分享。” —— 开发者智慧
+
+## 功能一览
+
+1.  **深色模式**：自动检测和平滑过渡。
+2.  **排版优化**：针对技术阅读进行了优化，代码块使用 Fira Code。
+3.  **响应式设计**：在移动端、平板和桌面端都有精致的体验。
+4.  **双语支持**：中英文无缝切换。
+
+请关注更多关于前端工程和系统设计的深入探讨！
